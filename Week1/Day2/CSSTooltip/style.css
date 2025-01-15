@@ -1,0 +1,86 @@
+.container {
+  height: 300px;
+  margin: 10px 0;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.container button {
+  position: relative;
+  padding: 10px 20px;
+  background-color: teal;
+  outline: none;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.container button::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  background-color: rgb(69, 69, 69);
+  color: white;
+  padding: 10px 20px;
+  white-space: nowrap;
+  pointer-events: none;
+  border-radius: 5px;
+  font-size: 12px;
+  opacity: 0;
+  /* transition: 0.6s ease-in; */
+}
+
+.container button:hover::after {
+  opacity: 1;
+}
+
+.container button[data-position="top"]::after {
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%);
+  margin-bottom: 5px;
+}
+
+.container button[data-position="top"]:hover {
+  transform: translateY(-50%);
+  transition-delay: 3000s;
+}
+
+.container button[data-position="bottom"]::after {
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%);
+  margin-top: 5px;
+}
+
+.container button[data-position="bottom"]:hover {
+  transform: translateY(50%);
+  transition-delay: 3000s;
+}
+
+.container button[data-position="left"]::after {
+  right: 50%;
+  /* top: 50%; */
+  bottom: 0;
+  transform: translate(-50%);
+  margin-right: 5px;
+}
+
+.container button[data-position="left"]:hover {
+  transform: translateX(-50%);
+  transition-delay: 3000s;
+}
+
+.container button[data-position="right"]::after {
+  left: 150%;
+  top: 0;
+  transform: translate(-50%);
+  margin-left: 5px;
+}
+
+.container button[data-position="right"]:hover {
+  transform: translateX(50%);
+  transition-delay: 3000s;
+}
