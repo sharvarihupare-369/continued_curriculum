@@ -7,9 +7,9 @@ This project is a responsive navbar with dropdown functionality.
 
 
 ## Large Screen View
-![Navbar for Large Screen](assets/large-screen.png "Large Screen Navbar")
+![Navbar for Large Screen](Week1/Day2/StaticNavbar/assets/large_screen.png)
 
 
 
 ## Small Screen View
-![Navbar for Small Screens](assets/small-screen.png "Small Screen Navbar")
+![Navbar for Small Screens](Week1/Day2/StaticNavbar/assets/small_screen.png)
