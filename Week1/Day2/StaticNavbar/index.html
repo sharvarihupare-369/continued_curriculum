@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Static Navbar with Hamburger Menu</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <i class="fas fa-bars hamburger-icon"></i>
+      <div class="box">
+        
+        <img
+        src="https://cdn.masaischool.com/masai-website/Masai_Logo_dark_web_b21aab8c62.webp"
+        alt="logo"
+        />
+        <button id="course_btn">
+          Courses
+          <span>
+            <i class="fas fa-angle-down"></i>
+          </span>
+        </button>
+      </div>
+          <div>
+            <ul class="list-container">
+              <li>Interview Guides</li>
+              <li>Success Stories</li>
+              <li>Hire From Us</li>
+              <li>Fees</li>
+              <li><button class="register-btn">Register</button></li>
+            </ul>
+          </div>
+          <div class="hamburger-menu">
+            <ul class="hamburger-list">
+              <!-- Populated in js -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dropdown-container">
+     <div>
+      <p>Masai courses</p>
+     </div>
+     <div class="divider"></div>
+     <div>
+      <ul class="dropdown-list-container">
+        <li>Software Development</li>
+        <li>Data Science</li>
+        <li>Digital Marketing</li>
+        <li>Business Analytics</li>
+      </ul>
+     </div>
+    </div>
+
+  </body>
+  <script src="./index.js"></script>
+</html>
