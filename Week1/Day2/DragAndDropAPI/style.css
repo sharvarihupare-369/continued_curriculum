@@ -1,0 +1,84 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.draggable {
+  width: 100px;
+  height: 100px;
+  background-color: #ff5722;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  cursor: grab;
+  font-size: 15px;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.draggable:active {
+  cursor: grabbing;
+}
+
+.drop {
+  width: 150px;
+  height: 150px;
+  border: 3px dashed #ccc;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: bold;
+  color: #aaa;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.drop.hovered {
+  background-color: #ffeb3b;
+  color: #333;
+}
+
+.drop.dropped {
+  background-color: #8bc34a;
+  color: white;
+  border: none;
+}
+
+.items-container {
+  margin-top: 100px;
+}
+
+ul {
+  list-style-type: none;
+  width: 300px;
+}
+
+li {
+  padding: 10px 15px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: grab;
+}
+
+li.dragging {
+  opacity: 0.5s;
+}
+
+li.over {
+  border: 2px dashed #007bff;
+  background-color: #e9f7ff;
+}
