@@ -5,7 +5,7 @@ const { UserModel } = require("../models/UserModel");
 const { BlackListModel } = require("../models/BlacklistModel");
 const { authMiddleware } = require("../middleware/authMiddleware");
 const secretKey = process.env.secret_key;
-const refreshToken = process.env.refresh_key;
+const refreshTokenKey = process.env.refresh_key;
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
@@ -52,9 +52,13 @@ router.post("/login", async (req, res) => {
       secretKey,
       { expiresIn: "1d" }
     );
-    const refresh_token = jwt.sign({ userId: existingUser._id }, refreshToken, {
-      expiresIn: "28d",
-    });
+    const refresh_token = jwt.sign(
+      { userId: existingUser._id },
+      refreshTokenKey,
+      {
+        expiresIn: "28d",
+      }
+    );
     res
       .status(200)
       .send({ message: "User LoggedIn Successfully!", token, refresh_token });
@@ -81,6 +85,28 @@ router.get("/logout", authMiddleware, async (req, res) => {
     }
     const blackListed = await BlackListModel.create({ token });
     res.status(200).send({ message: "User logged out successfully!" });
+  } catch (error) {
+    res
+      .status(400)
+      .send({ message: "Something Went Wrong", error: error.message });
+  }
+});
+
+router.get("/newtoken", (req, res) => {
+  try {
+    const refreshToken = req.headers["authorization"]?.split(" ")[1];
+    if (!refreshToken) {
+      return res.status(400).send({ message: "No token provided!" });
+    }
+    const decoded = jwt.verify(refreshToken, refreshTokenKey);
+    if (decoded) {
+      const token = jwt.sign({ userId: decoded.userId }, secretKey, {
+        expiresIn: "7d",
+      });
+      return res.send(200).send({ token });
+    }else{
+      res.send("Invalid refresh token, plz login again")
+    }
   } catch (error) {
     res
       .status(400)
